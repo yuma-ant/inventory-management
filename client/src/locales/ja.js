@@ -13,6 +13,7 @@ export default {
   // Dashboard
   dashboard: {
     title: '概要',
+    subtitle: '在庫・注文・売上の主要指標をモニタリング',
     kpi: {
       title: '主要業績評価指標',
       inventoryTurnover: '在庫回転率',

@@ -13,6 +13,8 @@ uv run python main.py
 
 ## Development Best Practices
 
+Always document non-obvious logic changes with comments.
+
 ### API Design Principles
 
 **RESTful Design:**

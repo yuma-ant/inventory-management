@@ -2,6 +2,7 @@
   <div class="dashboard">
     <div class="page-header">
       <h2>{{ t('dashboard.title') }}</h2>
+      <p>{{ t('dashboard.subtitle') }}</p>
     </div>
 
     <div v-if="loading" class="loading">{{ t('common.loading') }}</div>
@@ -727,16 +728,18 @@ export default {
 </script>
 
 <style scoped>
+/* Column layout so the subtitle sits under the title (global .page-header
+   is block; this scoped flex row would otherwise place them side by side) */
 .page-header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 24px;
 }
 
 .header-meta {
   font-size: 0.813rem;
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 .kpi-section {
@@ -759,9 +762,9 @@ export default {
 }
 
 .kpi-card {
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   padding: 1rem;
 }
 
@@ -772,7 +775,7 @@ export default {
 .kpi-label {
   font-size: 0.813rem;
   font-weight: 600;
-  color: #64748b;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.025em;
 }
@@ -780,14 +783,14 @@ export default {
 .kpi-value {
   font-size: 2rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text);
   margin-bottom: 0.5rem;
   letter-spacing: -0.025em;
 }
 
 .kpi-goal {
   font-size: 0.813rem;
-  color: #64748b;
+  color: var(--text-muted);
   margin-bottom: 0.75rem;
 }
 
@@ -813,7 +816,7 @@ export default {
 .charts-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  gap: 24px;
   margin-bottom: 1.5rem;
 }
 
@@ -846,7 +849,7 @@ export default {
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 12px;
   font-size: 0.875rem;
   color: #475569;
 }
@@ -883,7 +886,7 @@ export default {
 
 .donut-center-label {
   font-size: 12px;
-  fill: #64748b;
+  fill: var(--text-muted);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -891,14 +894,14 @@ export default {
 
 .donut-center-value {
   font-size: 36px;
-  fill: #0f172a;
+  fill: var(--text);
   font-weight: 700;
 }
 
 .donut-legend-compact {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.625rem 1.25rem;
+  gap: 12px 24px;
 }
 
 .legend-item-compact {
@@ -913,7 +916,7 @@ export default {
 .order-health-metrics {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 24px;
   justify-content: center;
   align-items: center;
 }
@@ -928,7 +931,7 @@ export default {
 
 .health-metric-label {
   font-size: 0.688rem;
-  color: #64748b;
+  color: var(--text-muted);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -937,7 +940,7 @@ export default {
 .health-metric-value {
   font-size: 1.75rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text);
   letter-spacing: -0.025em;
 }
 
@@ -978,7 +981,7 @@ export default {
 .h-bar-container {
   flex: 1;
   height: 32px;
-  background: #f8fafc;
+  background: var(--bg);
   border-radius: 6px;
   overflow: hidden;
 }
@@ -1011,7 +1014,7 @@ export default {
   padding-right: 1rem;
   font-size: 0.75rem;
   color: #94a3b8;
-  border-right: 1px solid #e2e8f0;
+  border-right: 1px solid var(--border);
 }
 
 .line-chart-area {
@@ -1070,7 +1073,7 @@ export default {
 .line-bar-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #64748b;
+  color: var(--text-muted);
   white-space: nowrap;
 }
 
@@ -1130,8 +1133,8 @@ export default {
 .task-input {
   flex: 1;
   padding: 0.75rem;
-  border: 2px solid #e2e8f0;
-  border-radius: 8px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
   font-size: 0.95rem;
   transition: border-color 0.2s ease;
 }
@@ -1146,7 +1149,7 @@ export default {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius);
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.2s ease, opacity 0.2s ease;
@@ -1164,7 +1167,7 @@ export default {
 .no-tasks {
   text-align: center;
   padding: 2rem;
-  color: #64748b;
+  color: var(--text-muted);
   font-style: italic;
 }
 
@@ -1179,15 +1182,15 @@ export default {
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  background: #f8fafc;
-  border-radius: 8px;
+  background: var(--bg);
+  border-radius: var(--radius);
   border: 2px solid transparent;
   transition: all 0.2s ease;
 }
 
 .task-item:hover {
-  border-color: #e2e8f0;
-  background: white;
+  border-color: var(--border);
+  background: var(--surface);
 }
 
 .task-item.completed {
@@ -1210,7 +1213,7 @@ export default {
   flex: 1;
   cursor: pointer;
   user-select: none;
-  color: #0f172a;
+  color: var(--text);
   font-size: 0.95rem;
 }
 
@@ -1232,7 +1235,7 @@ export default {
 }
 
 .task-delete-btn:hover {
-  background: #dc2626;
+  background: var(--danger);
   transform: scale(1.1);
 }
 
@@ -1253,7 +1256,7 @@ export default {
 }
 
 .po-button.create:hover {
-  background: #2563eb;
+  background: var(--accent);
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
 }

@@ -232,9 +232,9 @@ export default {
 }
 
 .trend-card {
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
   padding: 1.5rem;
   transition: all 0.2s ease;
 }
@@ -270,7 +270,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 1.75rem;
   font-weight: 700;
   flex-shrink: 0;
@@ -283,18 +283,18 @@ export default {
 
 .stable-card .trend-icon {
   background: #dbeafe;
-  color: #2563eb;
+  color: var(--accent);
 }
 
 .decreasing-card .trend-icon {
   background: #fee2e2;
-  color: #dc2626;
+  color: var(--danger);
 }
 
 .trend-label {
   font-size: 0.875rem;
   font-weight: 600;
-  color: #64748b;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -302,7 +302,7 @@ export default {
 .trend-count {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text);
   margin-top: 0.25rem;
 }
 
@@ -317,7 +317,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0.75rem;
-  background: #f8fafc;
+  background: var(--bg);
   border-radius: 6px;
   transition: background 0.2s;
 }
@@ -328,7 +328,7 @@ export default {
 
 .item-name {
   font-size: 0.875rem;
-  color: #0f172a;
+  color: var(--text);
   font-weight: 500;
   flex: 1;
   overflow: hidden;
@@ -352,16 +352,16 @@ export default {
 }
 
 .decreasing-card .item-change {
-  color: #dc2626;
+  color: var(--danger);
 }
 
 .item-change.neutral {
-  color: #64748b;
+  color: var(--text-muted);
 }
 
 .more-items {
   font-size: 0.813rem;
-  color: #64748b;
+  color: var(--text-muted);
   font-style: italic;
   text-align: center;
   padding: 0.5rem;

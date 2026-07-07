@@ -13,6 +13,7 @@ export default {
   // Dashboard
   dashboard: {
     title: 'Overview',
+    subtitle: 'Monitor key metrics across inventory, orders, and revenue',
     kpi: {
       title: 'Key Performance Indicators',
       inventoryTurnover: 'Inventory Turnover Rate',

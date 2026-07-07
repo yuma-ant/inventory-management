@@ -101,55 +101,49 @@ export default {
 </script>
 
 <style scoped>
+/* Compact inline row: the top bar provides the chrome (background/border),
+   so the filter bar itself is transparent and just lays out its controls. */
 .filters-bar {
-  background: #f8fafc;
-  border-bottom: 1px solid #e2e8f0;
-  padding: 0.75rem 0;
-  position: sticky;
-  top: 70px;
-  z-index: 90;
+  flex: 1;
+  min-width: 0; /* allows internal scroll instead of widening the top bar */
 }
 
 .filters-container {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 2rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 12px;
+  overflow-x: auto; /* safety: scrolls internally, never the page */
 }
 
 .filters-grid {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  flex: 1;
+  gap: 12px;
 }
 
 .filter-group {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 6px;
 }
 
 .filter-group label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
   white-space: nowrap;
 }
 
 .filter-select {
-  padding: 0.4rem 0.75rem;
-  border: 1px solid #cbd5e1;
+  padding: 5px 8px;
+  border: 1px solid var(--border);
   border-radius: 6px;
-  font-size: 0.813rem;
-  color: #0f172a;
-  background: white;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--surface);
   cursor: pointer;
   transition: all 0.2s;
   font-weight: 500;
-  min-width: 140px;
 }
 
 .filter-select:hover {
@@ -158,28 +152,36 @@ export default {
 
 .filter-select:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 0.1);
 }
 
 .reset-filters-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.4rem;
-  background: white;
-  border: 1px solid #e2e8f0;
+  padding: 5px;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 6px;
-  color: #64748b;
+  color: var(--text-muted);
   cursor: pointer;
   transition: all 0.2s;
   flex-shrink: 0;
 }
 
 .reset-filters-btn:hover:not(:disabled) {
-  background: #f8fafc;
+  background: var(--bg);
   border-color: #cbd5e1;
-  color: #0f172a;
+  color: var(--text);
+}
+
+/* Labels add ~280px; drop them on mid-size screens so the top bar fits
+   without horizontal scrolling (selects remain self-describing). */
+@media (max-width: 1280px) {
+  .filter-group label {
+    display: none;
+  }
 }
 
 .reset-filters-btn:disabled {
